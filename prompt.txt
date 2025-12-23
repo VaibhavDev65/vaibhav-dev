@@ -1,0 +1,20 @@
+make a fully responsive website with hamburgure for phones with font Poppins, sansarif
+
+1. it contains a nav bar containing on left side Site name 'Vaibhav Dev </>', on right two tabs 'home','Projects', 'blogs'
+2. on main body area there will be 2 sections horizontally in first section a good massege
+
+Welcome to[font size: smaller than Vaibhav]
+Vaibhav.Dev[font: bold]
+HTML, CSS, JS, Python[font: smaller as Welcome]
+
+in secont section there will be a pic 'programmer_v_02.png'
+
+3. a good looking footer with some links like home, projects in one horizontal section and second section links like youtube, instagram, discord
+4. main footer contains in middle 'Copyright Vaibhav.Dev | All rights Reserved'
+
+5. Same nav bar will display[no change]
+6. Same footers will display[no change]
+7. main body will contain a div in which projects will display in the 100 X 150 dimention card having small shadows[On hover it will scale up a little bit]
+8. projects section is in the main folder in .zip
+9. download option will be there in the card
+10. make a blogs page give it a attractive look with online pics from pintrest.com
