@@ -306,7 +306,9 @@ img {
   object-fit: cover;
   border-radius: inherit;
 }
-
+.project-content{
+  margin-top: 20px;
+}
 .project-content h3 {
   font-size: 1.05rem;
   margin-bottom: 6px;
