@@ -535,7 +535,7 @@ img {
 
 .screenshots-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 14px;
 }
 
@@ -546,7 +546,13 @@ hr {
   margin: 40px 0;
 }
 
+.ss{
+  height: 138px;
+  border-radius: 14px;
+}
+
 .screenshot {
+  width: 80%;
   height: 140px;
   border-radius: 14px;
   background: linear-gradient(
@@ -554,6 +560,9 @@ hr {
     rgba(56, 189, 248, 0.12),
     rgba(99, 102, 241, 0.22)
   );
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   border: 1px dashed rgba(148, 163, 184, 0.35);
 }
 
