@@ -39,4 +39,3 @@ if (navToggle && navLinks) {
     }
   });
 })();
-
