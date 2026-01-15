@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Offline Typing Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Typing Speed Test</h1>
+
+        <div class="sentence" id="sentence"></div>
+
+        <textarea id="input" placeholder="Click Start, then type here..." disabled></textarea>
+
+        <div class="info">
+            <div>⏱ Time: <span id="time">60</span>s</div>
+
+            <div class="modes">
+                <label>
+                    <input type="radio" name="mode" value="easy" checked> Easy
+                </label>
+                <label>
+                    <input type="radio" name="mode" value="medium"> Medium
+                </label>
+                <label>
+                    <input type="radio" name="mode" value="hard"> Hard
+                </label>
+            </div>
+
+            <div>🏆 High WPM: <span id="high">0</span></div>
+        </div>
+
+        <button id="startBtn">Start</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
