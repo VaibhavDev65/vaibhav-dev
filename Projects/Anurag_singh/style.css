@@ -1,0 +1,601 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: poppins, sans-serif;
+    box-sizing: border-box;
+    transition: .5s;
+}
+
+::selection{
+    background: #ff66009f;
+    color: #fff;
+}
+::-moz-selection{
+    background: #ff66009f;
+    color: #fff;
+}
+
+:root{
+    --font_color: #fff;
+    --highlights: #ff6600;
+    --addfont: #008cff;
+}
+
+
+body, html{
+    height: 100%;
+    width: 100%;
+}
+
+main{
+    background-image: url(Assets/index/physicsbg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    height: 66px;
+}
+
+.panel{
+    background-color: rgba(0, 12, 68, 0.356);
+    backdrop-filter: blur(5px);
+    height: 1000px;
+}
+
+.logo{
+    display: flex;
+    margin-left: 10px;
+}
+
+.logo span{
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    font-size: 20px;
+    color: var(--highlights);
+}
+
+.logo span i{
+    font-size: 40px;
+}
+
+.logo h1{
+    color: var(--highlights);
+}
+
+/* nav sections over  */
+
+/* section1 starts */
+
+.info h1{
+    margin-top: -25px;
+    color: var(--highlights);
+    font-size: 75px;
+}
+.info h2{
+    margin-left: 20px;
+}
+.info span{
+    color: var(--highlights);
+}
+
+.submain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* div{border: 1px solid #fff;} */
+
+.submain section{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 1px solid #ff0000; */
+    width: 50%;
+    height: 940px;
+}
+
+.buttons{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.primary{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 160px;
+    border-radius: 50px;
+    margin-right: 10px;
+    border: 2px solid var(--highlights);
+    background: linear-gradient(120deg, #ffae00, var(--highlights));
+    transition: .5s;
+}
+
+.primary:hover{
+    border: 2px solid #ffae00;
+    background: linear-gradient(120deg, var(--highlights), #ffae00);
+}
+.secondary{
+    color: var(--highlights);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 160px;
+    border-radius: 50px;
+    margin-right: 10px;
+    border: 2px solid var(--highlights);
+    transition: .5s;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.secondary:hover{
+    color: #fff;
+    border: 2px solid #ffae00;
+    background: linear-gradient(120deg, var(--highlights), #ffae00);
+}
+
+.captions{
+    margin-top: 20px;
+}
+.captions p{
+    margin: 10px 0px;
+}
+
+/* section1 over */
+
+.seperator{
+    border-left: 1px solid rgba(0, 0, 255, 0.253);
+    border-right: 1px solid rgba(0, 0, 255, 0.253);
+    height: 200px;
+    border-radius: 50%;
+}
+
+/* section2 starts */
+
+.teacher_photo{
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background-image: url(Assets/index/Anurag.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* section over */
+
+/* about section starts */
+
+.about{
+    background: linear-gradient(rgba(0, 12, 68, 0.356), rgba(255, 255, 255, 0.356));
+}
+
+.about .text p{
+    color: var(--font_color);
+}
+
+.containers .heading label{
+    font-size: 35px;
+    font-weight: 600;
+    border-bottom: 2px solid var(--highlights);
+    padding-bottom: 10px;
+}
+.containers{
+    backdrop-filter: blur(5px);
+    color: var(--font_color);
+    padding: 50px;
+}
+
+.containers .heading label{
+    font-size: 35px;
+    font-weight: 600;
+    border-bottom: 2px solid var(--highlights);
+    padding-bottom: 10px;
+}
+
+.containers .content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.containers .content .text{
+    margin-top: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.containers .content .text p{
+    text-align: justify;
+    max-width: 800px;
+    margin-left: 25px;
+    margin-bottom: 15px;
+    text-shadow: #00aeff 1px 1px 2px, #000 0 0 1px;
+}
+
+.containers .content .text p span{
+    text-shadow: none;
+    color: var(--highlights);
+    font-weight: 600;
+    font-style: italic
+}
+
+.containers .content .pic{
+    margin-top: 20px;
+    margin-right: 100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-image: url(Assets/index/relentless.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* about section over */
+
+/* contact section starts */
+
+.contact .heading label{
+    color: var(--highlights);
+    border-bottom: 2px solid var(--highlights);
+}
+
+.contact .content .text p{
+    color: var(--addfont);
+    text-align: justify;
+    max-width: 800px;
+    margin-left: 25px;
+    margin-bottom: 15px;
+    text-shadow: var(--addfont) 1px 1px 2px, #000 0 0 1px;
+}
+
+.containers .content .text .contact_info a{
+    color: #ff6600;
+    text-shadow: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+/* contact section ends here */
+/* institutions section starts */
+
+.institutions .heading label{
+    color: var(--highlights);
+    border-bottom: 2px solid var(--highlights);
+}
+
+.institutions .content .text p{
+    color: var(--addfont);
+    text-align: justify;
+    max-width: 800px;
+    margin-left: 25px;
+    margin-bottom: 15px;
+    text-shadow: var(--addfont) 1px 1px 2px, #000 0 0 1px;
+}
+
+.institutions .content .text .visittosite{
+    width: 200px;
+    margin: 15px 30px;
+    transition: .3s;
+}
+.institutions .content .text .visittosite2 {
+    width: 250px;
+    margin: 15px 30px;
+    transition: .3s;
+}
+.institutions .content .text .visittosite2 a{
+    color: var(--highlights);
+}
+.institutions .content .text .visittosite2:hover{
+    a{color: #fff;}
+}
+.institutions .content .text .headline{
+    color: var(--highlights);
+    font-weight: 600;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+/* institutions section ends */
+/* footers starts */
+
+.septum{
+    /* max-width: 50%; */
+    border-top: 2px dotted var(--highlights);
+    height: 2px;
+    margin: 50px 0px;
+    border-radius: 50%;
+}
+.septum2{
+    width: 100%;
+    background: linear-gradient(120deg, #000, var(--highlights));
+    height: 2px;
+    margin: 50px 0px;
+    border-radius: 50%;
+}
+
+footer{
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(120deg, var(--highlights), #000);
+}
+footer .footer_top{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+footer .footer_top .link_cont h2{
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+.link_cont ul li{
+    list-style: none;
+    margin: 8px 0px;
+}
+.footer_content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.footer_content p{
+    color: #fff;
+}
+.social_media a{
+    color: #fff;
+    margin: 0 15px;
+}
+.social_media a:hover{
+    color: var(--highlights);
+}
+
+/* footer ends here */
+
+/* gallary css code here */
+
+.gallery-grid {
+    column-count: 4;
+    column-gap: 20px;
+    margin-top: 40px;
+}
+.gallery .heading{
+    color: var(--highlights);
+}
+
+.gallery-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,.4);
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+}
+
+/* responsive */
+@media (max-width: 1200px) { .gallery-grid { column-count: 3; } }
+@media (max-width: 768px)  { .gallery-grid { column-count: 2; } }
+@media (max-width: 480px)  { .gallery-grid { column-count: 1; } }
+
+.gallery-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+
+/* responsive design starts */
+
+/* ===========================
+   GLOBAL RESPONSIVE FIXES
+=========================== */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+main,
+.panel {
+    min-height: 100vh;
+    height: auto;
+}
+
+/* ===========================
+   LAPTOPS & LARGE SCREENS
+=========================== */
+@media (max-width: 1200px) {
+
+    .info h1 {
+        font-size: 60px;
+    }
+
+    .containers .content .text {
+        width: 65%;
+    }
+
+    .teacher_photo {
+        width: 75%;
+        height: 75%;
+    }
+}
+
+/* ===========================
+   TABLETS
+=========================== */
+@media (max-width: 992px) {
+
+    nav {
+        justify-content: center;
+    }
+
+    .logo h1 {
+        font-size: 22px;
+    }
+
+    .submain {
+        flex-direction: column;
+    }
+
+    .submain section {
+        width: 100%;
+        height: auto;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .info h1 {
+        font-size: 48px;
+        margin-top: 0;
+    }
+
+    .info h2 {
+        margin-left: 0;
+    }
+
+    .buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .seperator {
+        display: none;
+    }
+
+    .teacher_photo {
+        width: 300px;
+        height: 300px;
+        margin: 20px auto;
+    }
+
+    .containers {
+        padding: 40px 30px;
+    }
+
+    .containers .content {
+        flex-direction: column;
+    }
+
+    .containers .content .text {
+        width: 100%;
+        align-items: center;
+    }
+
+    .containers .content .text p {
+        margin-left: 0;
+    }
+
+    .containers .content .pic {
+        margin: 30px auto 0;
+    }
+}
+
+/* ===========================
+   MOBILE PHONES
+=========================== */
+@media (max-width: 600px) {
+
+    nav {
+        height: auto;
+        padding: 10px;
+    }
+
+    .logo span i {
+        font-size: 28px;
+    }
+
+    .logo h1 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .info h1 {
+        font-size: 36px;
+    }
+
+    .info h2 {
+        font-size: 16px;
+    }
+
+    .degrees p {
+        font-size: 14px;
+    }
+
+    .captions p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .primary,
+    .secondary {
+        width: 200px;
+    }
+
+    .teacher_photo {
+        width: 220px;
+        height: 220px;
+    }
+
+    .containers {
+        padding: 30px 20px;
+    }
+
+    .containers .heading label {
+        font-size: 26px;
+    }
+
+    .containers .content .text p {
+        font-size: 15px;
+        text-align: left;
+    }
+
+    .institutions .content .text .visittosite,
+    .institutions .content .text .visittosite2 {
+        margin: 15px auto;
+    }
+
+    footer .footer_top {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer_content {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

@@ -237,7 +237,8 @@ img {
 }
 
 .hero-visual img {
-  width: min(520px, 90vw);
+  border-radius: 50%;
+  /* width: min(520px, 90vw); */
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
 }
 
