@@ -30,7 +30,7 @@ body, html{
 }
 
 main{
-    background-image: url(Assets/index/physicsbg.jpg);
+    background-image: url(https://github.com/VaibhavDev65/vaibhav-dev/blob/main/Projects/Anurag_singh/Assets/index/physicsbg.jpg?raw=true);
     background-repeat: no-repeat;
     background-size: cover;
     height: 1000px;
@@ -175,7 +175,7 @@ a{
     width: 70%;
     height: 70%;
     border-radius: 50%;
-    background-image: url(Assets/index/Anurag.png);
+    background-image: url(https://github.com/VaibhavDev65/vaibhav-dev/blob/main/Projects/Anurag_singh/Assets/index/Anurag.png?raw=true);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -251,7 +251,7 @@ a{
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background-image: url(Assets/index/relentless.png);
+    background-image: url(https://github.com/VaibhavDev65/vaibhav-dev/blob/main/Projects/Anurag_singh/Assets/index/relentless.png?raw=true);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
