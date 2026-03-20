@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg: #0b1224;
+  --panel: rgba(255, 255, 255, 0.04);
+  --muted: #94a3b8;
+  --text: #e2e8f0;
+  --accent: #38bdf8;
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0b1224;
+  background-image: radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.15), transparent 50%);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container { width: min(1200px, 92vw); margin: 0 auto; }
+
+/* Header & Back Button */
+.site-header { padding: 25px 0; border-bottom: 1px solid var(--border); }
+.nav-bar { display: flex; justify-content: space-between; align-items: center; }
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+.back-btn:hover { color: var(--accent); background: rgba(56, 189, 248, 0.1); }
+
+.brand { font-weight: 700; font-size: 1.2rem; }
+.accent-text { color: var(--accent); }
+
+/* Form Layout */
+.section-spacing { padding: 60px 0; flex-grow: 1; }
+.hire-header { text-align: center; margin-bottom: 40px; }
+.eyebrow { font-size: 0.8rem; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+.page-title { font-size: 2.5rem; margin: 10px 0; }
+.page-subtitle { color: var(--muted); font-size: 1rem; }
+
+/* Glass Container */
+.hire-form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--panel);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+}
+
+.hire-form { display: flex; flex-direction: column; gap: 24px; }
+
+/* Input Alignment FIX */
+.form-group-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left; /* Pura group left-aligned */
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+  padding-left: 4px;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  text-align: left; /* Placeholder aur text left se start hoga */
+  transition: 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(56, 189, 248, 0.05);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+/* Custom Select Service Styling */
+.form-group select {
+  appearance: none; /* Default browser arrow hatao */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  background-color: rgba(0, 0, 0, 0.3); /* Thoda dark background */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center; /* Right se 15px margin */
+  background-size: 18px;
+  
+  padding: 16px;
+  padding-right: 45px; /* Arrow ke liye space */
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: #ffffff; /* Font clear dikhne ke liye pure white */
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Option tags ke liye style (Mostly for Desktop) */
+.form-group select option {
+  background-color: #0f172a; /* Dropdown khulne par background dark rahe */
+  color: #ffffff;
+  padding: 10px;
+}
+
+/* Hover & Focus state */
+.form-group select:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  background-color: rgba(56, 189, 248, 0.05);
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+/* Placeholder jaisa dikhne wala pehla option */
+.form-group select:invalid,
+.form-group select option[value=""] {
+  color: #64748b; /* Muted color jab tak select na ho */
+}
+
+/* Submit Button */
+.btn.primary {
+  padding: 18px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), #6366f1);
+  color: #0b1224;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn.primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(56, 189, 248, 0.3);
+}
+
+.site-footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-group-row { grid-template-columns: 1fr; }
+  .hire-form-container { padding: 25px; }
+  .page-title { font-size: 1.8rem; }
+}

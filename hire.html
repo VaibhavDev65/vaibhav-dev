@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hire Me | Vaibhav Dev</title>
+    <link rel="stylesheet" href="hire.css" />
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container nav-bar">
+            <div class="brand">
+                Vaibhav Dev <span class="accent-text">&lt;/&gt;</span>
+            </div>
+            <a href="index.html" class="back-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <main class="section-spacing">
+        <div class="container">
+            <div class="hire-header">
+                <p class="eyebrow">Collaboration</p>
+                <h1 class="page-title">Let's build something <span class="accent-text">extraordinary</span></h1>
+                <p class="page-subtitle">Fill out the form below to start our journey together.</p>
+            </div>
+
+            <div class="hire-form-container">
+                <form class="hire-form" id="hireForm">
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="clientName">Your Name</label>
+                            <input type="text" id="clientName" placeholder="e.g. John Doe" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="clientEmail">Email Address</label>
+                            <input type="email" id="clientEmail" placeholder="abc123@example.com" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectType">What are you looking for?</label>
+                        <select id="projectType" required>
+                            <option value="" disabled selected hidden>Select service</option>
+                            <option value="Python Script">Python Automation</option>
+                            <option value="Web Dev">Web Development</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDescription">Project Details</label>
+                        <textarea id="projectDescription" rows="5" placeholder="Tell me about your project..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn primary">Send Proposal</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>Copyright Vaibhav.Dev | All rights Reserved</p>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD7deMPfPe2tD5QzIt_TOvl61t5826NXso",
+            authDomain: "vaibhav-portfolio-917a9.firebaseapp.com",
+            projectId: "vaibhav-portfolio-917a9",
+            storageBucket: "vaibhav-portfolio-917a9.firebasestorage.app",
+            messagingSenderId: "906198813981",
+            appId: "1:906198813981:web:d035936e843814666425f4",
+            measurementId: "G-9149SXZZY5"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        const hireForm = document.getElementById('hireForm');
+
+        hireForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('clientName').value;
+            const email = document.getElementById('clientEmail').value;
+            const type = document.getElementById('projectType').value;
+            const description = document.getElementById('projectDescription').value;
+
+            const submitBtn = event.target.querySelector('button');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+
+            try {
+                await addDoc(collection(db, "proposals"), {
+                    clientName: name,
+                    clientEmail: email,
+                    projectType: type,
+                    details: description,
+                    timestamp: new Date()
+                });
+                alert("Proposal sent successfully! I'll get back to you soon.");
+                hireForm.reset();
+            } catch (e) {
+                console.error("Error: ", e);
+                alert("Oops! Something went wrong. Please check your Firestore rules.");
+            } finally {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
