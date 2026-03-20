@@ -1,0 +1,50 @@
+[
+    {
+        "name": "YT Videos Downloader",
+        "description": "A ready-to-run YouTube downloader packaged as a ZIP. Unzip, install dependencies, and pull videos quickly.",
+        "Publish_date": "2024-03-15",
+        "thumbnail": "https://github.com/VaibhavDev65/vaibhav-dev/blob/main/assets/YT_video_downloader.png?raw=true",
+        "tags": ["ZIP ready", "Desktop"],   
+        "signature": "Vaibhav.dev",
+        "primary_button": {
+            "text": "Download",
+            "download_link": "https://github.com/VaibhavDev65/vaibhav-dev/blob/main/Projects/YT_videos_downloader.zip?raw=true"
+        },
+        "secondary_button": {
+            "text": "Docs soon",
+            "path": "#"
+        }
+    },
+    {
+        "name": "Physics With Anurag",
+        "description": "Official website for physics notes and resources. Designed for fast access and clean UI.",
+        "Publish_date": "2024-02-10",
+        "thumbnail": "https://github.com/VaibhavDev65/vaibhav-dev/blob/main/assets/anurag.png?raw=true",
+        "tags": ["Website", "Portfolio", "Education"],
+        "signature": "Vaibhav.dev",
+        "primary_button": {
+            "text": "Visit",
+            "download_link": "https://physics-with-anurag.page.gd/?i=1"
+        },
+        "secondary_button": {
+            "text": "Docs soon",
+            "path": "#"
+        }
+    },
+    {
+        "name": "Typing Speed Test",
+        "description": "Check your typing speed and accuracy with this simple desktop Webapp.",
+        "Publish_date": "2024-02-10",
+        "thumbnail": "https://github.com/VaibhavDev65/vaibhav-dev/blob/main/assets/Type_master.png?raw=true",
+        "tags": ["WebApp", "Typing"],
+        "signature": "Vaibhav.dev",
+        "primary_button": {
+            "text": "Test Now",
+            "download_link": "Projects/Typing_speed_test/type.html"
+        },
+        "secondary_button": {
+            "text": "Docs soon",
+            "path": "#"
+        }
+    }
+]
