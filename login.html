@@ -1,118 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Vaibhav.Dev Portal</title>
     <style>
-        :root {
-            --bg: #0b0e14;
-            --accent: #00d2ff;
-            --glass: rgba(255, 255, 255, 0.05);
-        }
-
-        body {
-            background: var(--bg);
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        /* Background Animation */
-        .bg-glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            filter: blur(150px);
-            opacity: 0.2;
-            border-radius: 50%;
-            z-index: -1;
-            animation: float 10s infinite alternate;
-        }
-
-        .login-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 320px;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        h2 {
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            color: var(--accent);
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid #333;
-            color: white;
-            border-radius: 8px;
-            box-sizing: border-box;
-            transition: 0.3s;
-            outline: none;
-        }
-
-        input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: var(--accent);
-            border: none;
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 8px;
-            margin-top: 20px;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
-        }
-
-        .error-msg {
-            color: #ff4444;
-            font-size: 13px;
-            margin-top: 15px;
-            display: none;
-        }
-
-        @keyframes float {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(10%, 10%); }
-        }
+        :root { --bg: #0b0e14; --accent: #00d2ff; --glass: rgba(255, 255, 255, 0.05); }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
+        .bg-glow { position: absolute; width: 300px; height: 300px; background: var(--accent); filter: blur(150px); opacity: 0.15; border-radius: 50%; z-index: -1; animation: float 10s infinite alternate; }
+        .login-card { background: var(--glass); backdrop-filter: blur(15px); padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); width: 320px; text-align: center; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); }
+        h2 { margin-bottom: 30px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; font-size: 22px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; background: rgba(0, 0, 0, 0.3); border: 1px solid #333; color: white; border-radius: 8px; box-sizing: border-box; transition: 0.3s; outline: none; }
+        input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(0, 210, 255, 0.2); }
+        button { width: 100%; padding: 12px; background: var(--accent); border: none; color: #000; font-weight: bold; cursor: pointer; border-radius: 8px; margin-top: 20px; transition: 0.3s; text-transform: uppercase; }
+        button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3); }
+        .error-msg { color: #ff4444; font-size: 13px; margin-top: 15px; display: none; background: rgba(255,68,68,0.1); padding: 8px; border-radius: 5px; }
+        @keyframes float { from { transform: translate(-15%, -15%); } to { transform: translate(15%, 15%); } }
     </style>
 </head>
-
 <body>
 
     <div class="bg-glow"></div>
 
     <div class="login-card">
-        <h2>PORTAL LOGIN</h2>
+        <h2>Portal Login</h2>
         <input type="email" id="email" placeholder="Email Address">
         <input type="password" id="password" placeholder="Password">
-        <a href="#" id="forgotPass" style="color: #00d2ff; font-size: 12px; display: block; margin-top: 10px; text-decoration: none;">Forgot Password?</a>
+        
+        <div style="text-align: right; margin-top: 5px;">
+            <a href="#" id="forgotPass" style="color: var(--accent); font-size: 12px; text-decoration: none; opacity: 0.8;">Forgot Password?</a>
+        </div>
+
         <button id="loginBtn">Access Dashboard</button>
         <p class="error-msg" id="errorMsg">Invalid Email or Password!</p>
     </div>
@@ -121,7 +39,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-        // 1. APNA FIREBASE CONFIG YAHAN DALO
         const firebaseConfig = {
             apiKey: "AIzaSyD7deMPfPe2tD5QzIt_TOvl61t5826NXso",
             authDomain: "vaibhav-portfolio-917a9.firebaseapp.com",
@@ -132,26 +49,26 @@
             measurementId: "G-9149SXZZY5"
         };
 
-        // 2. Initialize Firebase and Auth (Sirf ek baar)
+        // Initialize Firebase (Sirf EK baar)
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
         // --- Forgot Password Logic ---
         document.getElementById('forgotPass').addEventListener('click', async (e) => {
             e.preventDefault();
-            const emailValue = document.getElementById('email').value;
+            const emailField = document.getElementById('email');
+            const emailValue = emailField.value;
 
             if (!emailValue) {
-                alert("Please enter your email address in the field above first.");
-                document.getElementById('email').focus();
+                alert("Pehle Email box mein apni email ID likho!");
+                emailField.focus();
                 return;
             }
 
             try {
                 await sendPasswordResetEmail(auth, emailValue);
-                alert("Password reset link sent to your email! Check your inbox/spam.");
+                alert("Password reset link bhej diya gaya hai! Agar Inbox mein na mile toh SPAM folder check karein.");
             } catch (error) {
-                console.error("Reset Error:", error.message);
                 alert("Error: " + error.message);
             }
         });
@@ -161,33 +78,43 @@
             const email = document.getElementById('email').value;
             const pass = document.getElementById('password').value;
             const errorMsg = document.getElementById('errorMsg');
+            const loginBtn = document.getElementById('loginBtn');
 
             if (!email || !pass) {
-                alert("Please fill in both fields.");
+                alert("Dono fields bharna zaroori hai.");
                 return;
             }
+
+            // Button Loading State
+            loginBtn.innerText = "Verifying...";
+            loginBtn.disabled = true;
+            errorMsg.style.display = 'none';
 
             try {
                 const userCredential = await signInWithEmailAndPassword(auth, email, pass);
                 const user = userCredential.user;
 
-                // Role Decide Karna
+                // Role Handling
                 if (user.email === "vaibhavbbk7@gmail.com") {
                     localStorage.setItem("userRole", "admin");
                 } else {
                     localStorage.setItem("userRole", "client");
-                    localStorage.setItem("userEmail", user.email);
                 }
+                
+                // Important for Portal filtering
+                localStorage.setItem("userEmail", user.email);
 
-                // Redirect to Portal
+                // Success Redirect
                 window.location.href = "portal.html";
 
             } catch (error) {
+                loginBtn.innerText = "Access Dashboard";
+                loginBtn.disabled = false;
                 errorMsg.style.display = 'block';
-                console.error("Login Error:", error.message);
+                errorMsg.innerText = "Check your email/password again.";
+                console.error("Login Error:", error.code);
             }
         });
     </script>
 </body>
-
 </html>
