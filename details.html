@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Vaibhav.Dev</title>
+    <style>
+        :root {
+            --bg: #0b0e14;
+            --glass: rgba(255, 255, 255, 0.05);
+            --accent: #00d2ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: white;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .detail-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .accent-text {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Futuristic Progress Bar */
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            height: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.1, 0.7, 1.0, 0.1);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-item label {
+            display: block;
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .info-item div {
+            font-size: 16px;
+            color: #eee;
+        }
+
+        .description-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .description-box p {
+            margin: 0;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="detail-card">
+        <div id="mainContent">
+            <h1 id="pType">Loading Project...</h1>
+        </div>
+        <div id="errorMessage" style="display:none; color:#ff4444; text-align:center;">
+            <h3>Error: Could not fetch data.</h3>
+            <p id="errorText"></p>
+            <a href="portal.html" class="back-btn">Back to Dashboard</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD7deMPfPe2tD5QzIt_TOvl61t5826NXso",
+            authDomain: "vaibhav-portfolio-917a9.firebaseapp.com",
+            projectId: "vaibhav-portfolio-917a9",
+            storageBucket: "vaibhav-portfolio-917a9.firebasestorage.app",
+            messagingSenderId: "906198813981",
+            appId: "1:906198813981:web:d035936e843814666425f4",
+            measurementId: "G-9149SXZZY5"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const proposalId = urlParams.get('id');
+
+        // Step 1: Check if User is Logged In
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // Agar login nahi hai toh login page pe bhejo
+                window.location.href = "login.html";
+                return;
+            }
+
+            if (proposalId) {
+                // Step 2: Fetch Data only if Auth is confirmed
+                onSnapshot(doc(db, "proposals", proposalId), (docSnap) => {
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        const card = document.querySelector('.detail-card');
+
+                        // --- REJECTION LOGIC ---
+                        if (data.status === "denied") {
+                            card.innerHTML = `
+                            <div style="text-align: center; padding: 20px;">
+                                <h1 style="color: #ff4444; font-size: 50px;">☹️</h1>
+                                <h2 style="color: #ff4444;">Request Denied</h2>
+                                <p style="color: #eee; font-size: 18px; margin-top: 20px;">
+                                    Sorry! Your this request cannot be fulfilled by us at the moment.
+                                </p>
+                                <a href="portal.html" class="back-btn">← Back to Dashboard</a>
+                            </div>`;
+                            return;
+                        }
+
+                        // --- SUCCESS LOGIC: Fill the Details ---
+                        // Pura UI render karne ke liye yahan content inject karo
+                        card.innerHTML = `
+                        <div class="header">
+                            <h1 class="accent-text">${data.projectType}</h1>
+                            <p>Project ID: ${proposalId}</p>
+                        </div>
+                        <div class="info-grid">
+                            <div class="info-item"><label>Client</label><div>${data.clientName}</div></div>
+                            <div class="info-item"><label>Status</label><div class="accent-text">${data.status.toUpperCase()}</div></div>
+                        </div>
+                        <div class="description-box">
+                            <p>${data.details || "No details provided"}</p>
+                        </div>
+                        <a href="portal.html" class="back-btn">← Back to Dashboard</a>
+                    `;
+
+                    } else {
+                        showError("Document not found.");
+                    }
+                }, (error) => {
+                    showError("Permission Denied! Apne rules aur login email check karein.");
+                    console.error(error);
+                });
+            }
+        });
+
+        function showError(msg) {
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'block';
+            document.getElementById('errorText').innerText = msg;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hire Me | Vaibhav Dev</title>
     <link rel="stylesheet" href="hire.css" />
 </head>
+
 <body>
 
     <header class="site-header">
@@ -56,7 +58,8 @@
 
                     <div class="form-group">
                         <label for="projectDescription">Project Details</label>
-                        <textarea id="projectDescription" rows="5" placeholder="Tell me about your project..."></textarea>
+                        <textarea id="projectDescription" rows="5"
+                            placeholder="Tell me about your project..."></textarea>
                     </div>
 
                     <button type="submit" class="btn primary">Send Proposal</button>
@@ -71,8 +74,8 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyD7deMPfPe2tD5QzIt_TOvl61t5826NXso",
@@ -85,8 +88,8 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
         const db = getFirestore(app);
+        const auth = getAuth(app);
 
         const hireForm = document.getElementById('hireForm');
 
@@ -98,29 +101,46 @@
             const type = document.getElementById('projectType').value;
             const description = document.getElementById('projectDescription').value;
 
+            // Default Password Logic: Name@123 (e.g., Vaibhav@123)
+            const defaultPassword = name.split(' ')[0] + "@123";
+
             const submitBtn = event.target.querySelector('button');
-            const originalText = submitBtn.innerText;
-            submitBtn.innerText = "Sending...";
+            submitBtn.innerText = "Creating Account...";
             submitBtn.disabled = true;
 
             try {
+                // 1. Create Firebase Auth Account (Auto-Registration)
+                try {
+                    await createUserWithEmailAndPassword(auth, email, defaultPassword);
+                } catch (authError) {
+                    // Agar user pehle se hai toh skip karega (auth/email-already-in-use)
+                    console.log("User already exists, skipping account creation.");
+                }
+
+                // 2. Add Proposal to Firestore
                 await addDoc(collection(db, "proposals"), {
                     clientName: name,
                     clientEmail: email,
                     projectType: type,
                     details: description,
-                    timestamp: new Date()
+                    status: "pending", // Dashboard ke liye important
+                    timestamp: serverTimestamp() // Better ordering ke liye
                 });
-                alert("Proposal sent successfully! I'll get back to you soon.");
+
+                alert(`Proposal Sent Successfully! \n\nYou can now track your project in the Client Portal. \nEmail: ${email} \nPassword: ${defaultPassword}`);
+
                 hireForm.reset();
+                window.location.href = "login.html"; // Seedha login page par le jao
+
             } catch (e) {
                 console.error("Error: ", e);
-                alert("Oops! Something went wrong. Please check your Firestore rules.");
+                alert("Error: " + e.message);
             } finally {
-                submitBtn.innerText = originalText;
+                submitBtn.innerText = "Send Proposal";
                 submitBtn.disabled = false;
             }
         });
     </script>
 </body>
+
 </html>
