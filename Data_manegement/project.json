@@ -56,7 +56,7 @@
         "signature": "Vaibhav.dev",
         "primary_button": {
             "text": "Download",
-            "download_link": "projects/CluterHandler.zip"
+            "download_link": "Projects/CluterHandler.zip"
         },
         "secondary_button": {
             "text": "Documentation",
