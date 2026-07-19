@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cluster Manager Documentation</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --panel-bg: #161b22;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-success: #2ea44f;
+            --border-color: #30363d;
+            --code-bg: #010409;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: var(--panel-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        /* Code Block Styling */
+        pre {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9rem;
+        }
+
+        code {
+            color: #ff7b72;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9rem;
+            background-color: rgba(110, 118, 129, 0.4);
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+        }
+
+        pre code {
+            color: var(--text-main);
+            background-color: transparent;
+            padding: 0;
+        }
+
+        /* CTA Button */
+        .btn-container {
+            text-align: center;
+            margin: 2.5rem 0;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background-color: var(--accent-success);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+            box-shadow: 0 4px 12px rgba(46, 164, 79, 0.3);
+        }
+
+        .btn-download:hover {
+            background-color: #2c974b;
+        }
+
+        /* Footer Section */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .dev-card {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .dev-card p {
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .dev-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📁 Cluster Manager</h1>
+        <p style="color: var(--text-muted);">Dynamic Desktop & Directory Automation Utility</p>
+    </header>
+
+    <section id="about">
+        <h2>Overview</h2>
+        <p><strong>Cluster Manager</strong> is a lightweight, single-click automation utility designed to clean up highly cluttered system environments (like your Downloads or Desktop directories). It scans active file pathways, evaluates item types, and logically shifts them into dedicated sub-folders based on their technical file signatures—preserving data availability while removing structural mess.</p>
+    </section>
+
+    <section id="features">
+        <h2>Key Features</h2>
+        <ul>
+            <li><span class="highlight">Automated File Routing:</span> Processes <code>.py</code>, <code>.txt</code>, <code>.ppt</code>, <code>.xlsx</code>, <code>.pdf</code>, and other data streams straight out of the box.</li>
+            <li><span class="highlight">Safety-First Protocol:</span> Does not enforce immediate hardware data removal. Files are cleanly separated, giving the user final control over asset management.</li>
+            <li><span class="highlight">Native Integration:</span> Packaged into a fast GUI framework using PyQt5 for standalone execution without background system throttling.</li>
+        </ul>
+    </section>
+
+    <div class="btn-container">
+        <a href="projects.html" class="btn-download" target="_blank">📥 Download Standalone Executable (.exe)</a>
+    </div>
+
+    <section id="usage">
+        <h2>Developer Deployment</h2>
+        <p>To run the application directly from the baseline source modules within your local machine workspace:</p>
+        
+        <pre><code># 1. Clone the master source logic
+git clone https://github.com/VaibhavDev65/cluster-manager.git
+
+# 2. Navigate to directory and launch environment dependencies
+pip install PyQt5 pathlib shutil
+
+# 3. Initialize deployment script
+python app.py</code></pre>
+    </section>
+
+    <section id="architecture">
+        <h2>Tech Stack Details</h2>
+        <ul>
+            <li><strong>Language Platform:</strong> Python</li>
+            <li><strong>Core Modules:</strong> <code>pathlib</code> (Directory Tree Navigation), <code>shutil</code> (High-Level File Operations Architecture)</li>
+            <li><strong>Interface Layer:</strong> PyQt5 (Graphical Framework)</li>
+            <li><strong>Compilation Profile:</strong> PyInstaller Core Single-File Executable Mode</li>
+        </ul>
+    </section>
+
+    <footer>
+        <h2>Architect Profile</h2>
+        <div class="dev-card">
+            <p><strong>Lead Architect:</strong> [Vaibhav Singh / Solo Developer Profile]</p>
+            <p><strong>Specialization:</strong> Systems Automation, Object-Oriented Backend Engineering & Micro-Utilities.</p>
+            <p><strong>Vision:</strong> Developing scalable utility engines, high-speed data pipelines, and secured micro-SaaS infrastructures.</p>
+            <div class="dev-meta">
+                <span><strong>Status:</strong> Public Open Source Asset</span>
+                <span><strong>Deployment Date:</strong> July 19, 2026</span>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>

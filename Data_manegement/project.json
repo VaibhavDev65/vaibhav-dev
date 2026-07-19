@@ -46,5 +46,21 @@
             "text": "Docs soon",
             "path": "#"
         }
+    },
+    {
+        "name": "Cluter Handler",
+        "description": "Fix you dirty random files in a folder.",
+        "Publish_date": "2024-02-10",
+        "thumbnail": "https://github.com/VaibhavDev65/vaibhav-dev/blob/main/assets/CluterManager.png?raw=true",
+        "tags": ["Windows", "File Management"],
+        "signature": "Vaibhav.dev",
+        "primary_button": {
+            "text": "Download",
+            "download_link": "projects/CluterHandler.zip"
+        },
+        "secondary_button": {
+            "text": "Documentation",
+            "path": "clutermanagementDocs.html"
+        }
     }
 ]
