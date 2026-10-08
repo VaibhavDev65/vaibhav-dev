@@ -1,91 +1,574 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Vaibhav.Dev portfolio covering web and software projects with HTML, CSS, JS, and Python."
-    />
-    <title>Vaibhav Dev | Home</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+<html lang="en" class="scroll-smooth">
 
-  <body data-page="home">
-    
-    <header class="site-header">
-      <div class="container nav-bar">
-        <div class="brand">
-          Vaibhav Dev <span class="accent">&lt;/&gt;</span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Morgan | Senior Full-Stack Developer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://github.com/VaibhavDev65/vaibhav-dev/blob/main/assets/programmer.png.jpg?raw=true" type="image/x-icon">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#06b6d4', // Cyan accent
+                            purple: '#a855f7'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- External Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body
+    class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Floating Header Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="glass rounded-2xl px-5 py-3 flex items-center justify-between shadow-lg shadow-black/5">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-2 group">
+                    <span
+                        class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-accent flex items-center justify-center text-white font-mono font-bold text-xl shadow-md group-hover:scale-105 transition-transform duration-300">
+                        &lt;/&gt;
+                    </span>
+                    <span class="font-bold text-lg tracking-tight group-hover:text-brand-500 transition-colors">
+                        Vaibhav<span class="text-brand-500 dark:text-brand-400">.dev</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation Menu Links -->
+                <div class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <a href="#about"
+                        class="nav-link px-3 py-1.5 rounded-lg text-sm font-medium hover:text-brand-500 dark:hover:text-brand-400 transition-colors">About</a>
+                    <a href="#skills"
+                        class="nav-link px-3 py-1.5 rounded-lg text-sm font-medium hover:text-brand-500 dark:hover:text-brand-400 transition-colors">Skills</a>
+                    <a href="#projects"
+                        class="nav-link px-3 py-1.5 rounded-lg text-sm font-medium hover:text-brand-500 dark:hover:text-brand-400 transition-colors">Projects</a>
+                    <a href="#timeline"
+                        class="nav-link px-3 py-1.5 rounded-lg text-sm font-medium hover:text-brand-500 dark:hover:text-brand-400 transition-colors">Experience</a>
+                    <a href="#contact"
+                        class="nav-link px-3 py-1.5 rounded-lg text-sm font-medium hover:text-brand-500 dark:hover:text-brand-400 transition-colors">Contact</a>
+                </div>
+
+                <!-- Theme Toggle & CTA Buttons -->
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" aria-label="Toggle Theme"
+                        class="p-2.5 rounded-xl bg-slate-200/60 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+
+                    <a href="#contact"
+                        class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm transition-all shadow-md hover:shadow-lg hover:shadow-brand-500/20 active:scale-95">
+                        <span>Let's Talk</span>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu"
+                        class="md:hidden p-2 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </nav>
         </div>
-        <button
-          class="hamburger"
-          aria-label="Toggle navigation menu"
-          aria-expanded="false"
-          data-nav-toggle
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a class="nav-link" href="index.html">Home</a></li>
-          <li><a class="nav-link" href="projects.html">Projects</a></li>
-          <li><a class="nav-link" href="blogs.html">Blogs</a></li>
-          <li><a class="nav-link portal-btn" href="login.html">Client Portal</a></li>
-          <li><a class="nav-link primary" href="hire.html">Collaboration</a></li>
-        </ul>
-      </div>
+
+        <!-- Mobile Navigation Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto px-4 mt-2">
+            <div
+                class="glass rounded-2xl p-4 flex flex-col gap-2 shadow-xl border border-slate-200/50 dark:border-slate-800/50">
+                <a href="#about"
+                    class="mobile-nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">About</a>
+                <a href="#skills"
+                    class="mobile-nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Skills</a>
+                <a href="#projects"
+                    class="mobile-nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Projects</a>
+                <a href="#timeline"
+                    class="mobile-nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Experience</a>
+                <a href="#contact"
+                    class="mobile-nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Contact</a>
+            </div>
+        </div>
     </header>
 
-    <main>
-      <div class="container section-spacing">
-        <section class="hero">
-          <div class="hero-text">
-            <p class="eyebrow">Welcome to</p>
-            <h1>Vaibhav.Dev</h1>
-            <p class="subheading">HTML, CSS, JS, Python</p>
-            <p class="description">
-              A focused developer portfolio showcasing production‑ready projects and real-world problem solving.<br />
-              Explore selected work, download complete source code, and see how I use HTML, CSS, JavaScript, and Python to build robust solutions.
-            </p>
-            <div class="hero-actions">
-              <a class="btn primary" href="hire.html">Collaboration with me</a>
-              <a class="btn secondary" href="projects.html">View Projects</a>
-              <a class="btn secondary" href="blogs.html">Read Blogs</a>
-            </div>
-          </div>
-          <div class="hero-visual">
-            <img
-              src="https://github.com/VaibhavDev65/vaibhav-dev/blob/main/assets/programmer_v_02.png?raw=true"
-              alt="Illustration of a programmer at a desk"
-            />
-          </div>
-        </section>
-      </div>
-    </main>
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+        <!-- Canvas Background for Interactive Particle Network -->
+        <canvas id="particle-canvas"
+            class="absolute inset-0 w-full h-full pointer-events-none opacity-40 dark:opacity-30"></canvas>
 
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="blogs.html">Blogs</a>
-          </div>
-          <div class="footer-links">
-            <a href="https://youtube.com" target="_blank" rel="noreferrer">YouTube</a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://discord.com" target="_blank" rel="noreferrer">Discord</a>
-          </div>
+        <!-- Ambient Glow Orbs -->
+        <div
+            class="absolute top-1/4 left-10 w-72 h-72 bg-brand-500/20 dark:bg-brand-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow">
         </div>
-        <div class="footer-bottom">
-          Copyright Vaibhav.Dev | All rights Reserved
+        <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-brand-accent/20 dark:bg-brand-accent/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow"
+            style="animation-delay: 2s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <!-- Status Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800/60 text-brand-700 dark:text-brand-300 text-xs sm:text-sm font-medium mb-8 animate-fade-in shadow-sm"
+                style="background-color: #bbb1f7;">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Available for new opportunities
+            </div>
+
+            <!-- Main Heading with Dynamic Role Typing -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6">
+                Hi, I'm <span class="text-gradient">Vaibhav Singh</span>
+                <br>
+                <span
+                    class="block text-2xl sm:text-4xl md:text-5xl font-semibold text-slate-600 dark:text-slate-400 mt-3 h-14">
+                    I build <span id="typewriter" class="typing-cursor text-slate-900 dark:text-white font-mono"></span>
+                </span>
+            </h1>
+
+            <!-- Hero Subtitle -->
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
+                Passionate Full-Stack Engineer crafting resilient web applications, modern intuitive UI/UX designs, and
+                scalable cloud solutions with cutting-edge tech stacks.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a href="#projects"
+                    class="px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-base transition-all shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2">
+                    <span>View Projects</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <a href="#contact"
+                    class="px-7 py-3.5 rounded-xl bg-slate-200/80 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-base transition-all hover:-translate-y-0.5 active:translate-y-0 border border-slate-300/50 dark:border-slate-700/50">
+                    Get in Touch
+                </a>
+            </div>
+
+            <!-- Quick Socials -->
+            <div class="flex items-center justify-center gap-6 text-slate-600 dark:text-slate-400">
+                <a href="https://github.com/VaibhavDev65" target="_blank" rel="noopener noreferrer"
+                    class="text-xl hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
+                    aria-label="GitHub Profile">
+                    <i class="fa-brands fa-github text-2xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/vaibhav-singh-a133223b9/" target="_blank" rel="noopener noreferrer"
+                    class="text-xl hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
+                    aria-label="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin text-2xl"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                    class="text-xl hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
+                    aria-label="Twitter Profile">
+                    <i class="fa-brands fa-x-twitter text-2xl"></i>
+                </a>
+                <a href="https://www.instagram.com/vaibhav_dev_65/" target="_blank" rel="noopener noreferrer"
+                    class="text-xl hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
+                    aria-label="Instagram Profile">
+                    <i class="fa-brands fa-instagram text-2xl"></i>
+                </a>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">Get to
+                    Know Me</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">About Me</p>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Avatar Showcase Column -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        <!-- Glow behind image -->
+                        <div
+                            class="absolute -inset-1.5 bg-gradient-to-r from-brand-500 via-brand-purple to-brand-accent rounded-3xl blur opacity-30 group-hover:opacity-75 transition duration-500">
+                        </div>
+
+                        <!-- Avatar Card -->
+                        <div
+                            class="relative w-72 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden glass-card p-2 flex flex-col justify-end bg-slate-100 dark:bg-slate-900 shadow-xl">
+                            <img src="https://github.com/VaibhavDev65/vaibhav-dev/blob/main/assets/programmer.png.jpg?raw=true"
+                                alt="Vaibhav Singh"
+                                class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500">
+
+                            <div class="absolute bottom-4 left-4 right-4 glass p-3 rounded-xl border border-white/20">
+                                <p class="font-bold text-sm text-slate-900 dark:text-white">Vaibhav Singh</p>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">Based in India Uttar Pradesh, CA
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bio Content Column -->
+                <div class="lg:col-span-7">
+                    <h3 class="text-2xl font-bold mb-4">Action-Oriented & Project-Focused</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                        Crafting modern web applications step by step
+                        I am a dedicated junior web developer with hands-on experience building foundational web
+                        applications. I am actively growing my expertise in modern web development, focusing on creating
+                        responsive layouts and engaging user interfaces.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+                        My approach centers on writing thoughtful, performant code and learning how the pieces of web
+                        architecture fit together. I am highly motivated by problem-solving and the continuous learning
+                        that programming requires. Outside of my coursework and coding, I enjoy experimenting with new
+                        tech stacks, reading industry blogs, and finding creative ways to improve my development
+                        workflow.
+                    </p>
+
+                    <!-- Key Metrics Highlight Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="glass-card p-4 rounded-2xl text-center">
+                            <span class="block text-3xl font-extrabold text-brand-600 dark:text-brand-400">1+</span>
+                            <span class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">Years
+                                Experience</span>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl text-center">
+                            <span class="block text-3xl font-extrabold text-brand-600 dark:text-brand-400">5+</span>
+                            <span class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">Projects
+                                Shipped</span>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl text-center col-span-2 sm:col-span-1">
+                            <span class="block text-3xl font-extrabold text-brand-600 dark:text-brand-400">99%</span>
+                            <span class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">Client
+                                Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Technologies Section -->
+    <section id="skills" class="py-20 bg-slate-100/50 dark:bg-slate-900/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">Technical
+                    Proficiency</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Skills & Tech Stack</p>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Skill Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" id="skill-filters">
+                <button
+                    class="skill-filter-btn active px-4 py-2 rounded-xl text-sm font-medium transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20"
+                    data-filter="all">All Skills</button>
+                <button
+                    class="skill-filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all bg-slate-200/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700"
+                    data-filter="frontend">Frontend</button>
+                <button
+                    class="skill-filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all bg-slate-200/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700"
+                    data-filter="backend">Backend</button>
+                <button
+                    class="skill-filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all bg-slate-200/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700"
+                    data-filter="devops">DevOps & Tools</button>
+            </div>
+
+            <!-- Skills Grid with Animated Bars -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="skills-container">
+                <!-- skilles to be added -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">Featured
+                    Work</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Recent Projects</p>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" id="project-filters">
+                <button
+                    class="project-filter-btn active px-4 py-2 rounded-xl text-sm font-medium transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20"
+                    data-filter="all">All Projects</button>
+                <button
+                    class="project-filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all bg-slate-200/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700"
+                    data-filter="web">Web Apps / Apps</button>
+                <button
+                    class="project-filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all bg-slate-200/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700"
+                    data-filter="ai">AI / ML</button>
+                <button
+                    class="project-filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all bg-slate-200/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700"
+                    data-filter="mobile">Mobile</button>
+            </div>
+
+            <!-- Projects Grid Container (Populated Dynamically via JS) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid"></div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="py-20 bg-slate-100/50 dark:bg-slate-900/50 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">Career
+                    Journey</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Experience & Education</p>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Vertical Timeline Wrapper -->
+            <div class="relative border-l-2 border-slate-300 dark:border-slate-800 ml-4 sm:ml-32 space-y-12">
+
+                <!-- Item 1 -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-brand-600 border-4 border-slate-50 dark:border-slate-950 flex items-center justify-center text-white text-xs shadow-md">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+
+                    <div
+                        class="sm:absolute sm:-left-36 sm:top-1.5 mb-2 sm:mb-0 text-sm font-mono font-semibold text-brand-600 dark:text-brand-400">
+                        2022 - Present
+                    </div>
+
+                    <div class="ml-6 glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold">Frontend Engineer</h3>
+                        <p class="text-sm font-medium text-slate-500 mb-3">Sainik Public School • India, Self-Taught Programmer</p>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Developed responsive React interfaces and reusable component design systems. Integrated
+                            RESTful and GraphQL APIs with real-time WebSockets synchronization.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-brand-500 border-4 border-slate-50 dark:border-slate-950 flex items-center justify-center text-white text-xs shadow-md">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+
+                    <div
+                        class="sm:absolute sm:-left-36 sm:top-1.5 mb-2 sm:mb-0 text-sm font-mono font-semibold text-slate-500">
+                        2020 - 2022
+                    </div>
+
+                    <div class="ml-6 glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold">Web Application Creator</h3>
+                        <p class="text-sm font-medium text-slate-500 mb-3">Personal Project • Self-Taught</p>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Designed and developed a responsive web application from scratch. Applied modern HTML, CSS, and JavaScript fundamentals to create an interactive and user-friendly experience.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-brand-accent border-4 border-slate-50 dark:border-slate-950 flex items-center justify-center text-white text-xs shadow-md">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+
+                    <div
+                        class="sm:absolute sm:-left-36 sm:top-1.5 mb-2 sm:mb-0 text-sm font-mono font-semibold text-slate-500">
+                        2016 - 2020
+                    </div>
+
+                    <div class="ml-6 glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold">Student Of Computer Science</h3>
+                        <p class="text-sm font-medium text-slate-500 mb-3">SD College • Barabanki </p>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Completed a comprehensive curriculum in computer science, covering programming languages, data structures, algorithms, and software development principles. Engaged in various projects and coding challenges to enhance practical skills.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">Get In
+                    Touch</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Let's Work Together</p>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+                        Have a project in mind, a query, or just want to discuss potential tech collaborations? Feel
+                        free to drop a message!
+                    </p>
+
+                    <div class="flex items-center gap-4 glass-card p-4 rounded-2xl">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 font-medium">Email Me At</p>
+                            <a href="mailto:vaibhavbbk7@gmail.com"
+                                class="font-semibold hover:text-brand-500 transition-colors">vaibhavbbk7@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 glass-card p-4 rounded-2xl">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 font-medium">Location</p>
+                            <p class="font-semibold">Barabanki, Uttar Pradesh, India</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Column -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="glass-card p-8 rounded-3xl space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name"
+                                    class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Your
+                                    Name</label>
+                                <input type="text" id="name" required placeholder="John Doe"
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm transition-all">
+                            </div>
+                            <div>
+                                <label for="email"
+                                    class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Your
+                                    Email</label>
+                                <input type="email" id="email" required placeholder="john@example.com"
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject"
+                                class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Subject</label>
+                            <input type="text" id="subject" required placeholder="Project Proposal"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm transition-all">
+                        </div>
+
+                        <div>
+                            <label for="message"
+                                class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Message</label>
+                            <textarea id="message" rows="5" required placeholder="Tell me about your project..."
+                                class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm transition-all resize-none"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full py-3.5 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-500/25 transition-all flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-200 dark:border-slate-800">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <p>© <span id="year"></span> Vaibhav Singh | All rights reserved.</p>
+            <p>Designed & Crafted with <i class="fa-solid fa-heart text-red-500"></i> using HTML, CSS & JS.</p>
+        </div>
     </footer>
 
-    <script src="scripts.js"></script>
-  </body>
-</html>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to Top"
+        class="fixed bottom-6 right-6 p-3 rounded-xl bg-brand-600 text-white shadow-xl opacity-0 pointer-events-none transition-all duration-300 hover:bg-brand-700 hover:scale-110 z-40">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
+    <!-- Project Details Modal Popup -->
+    <div id="project-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 relative shadow-2xl scale-95 transition-all duration-300 max-h-[90vh] overflow-y-auto"
+            id="modal-content">
+            <button id="close-modal" aria-label="Close Modal"
+                class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-200/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-slate-300 transition-all flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <img id="modal-image" src="" alt="Project Image" class="w-full h-56 object-cover rounded-2xl mb-6">
+
+            <h3 id="modal-title" class="text-2xl font-bold mb-3">Project Title</h3>
+            <p id="modal-description" class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">Detailed
+                project description goes here...</p>
+
+            <div class="mb-6">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Technologies Used</h4>
+                <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <div class="flex gap-4">
+                <a id="modal-live-link" href="#" target="_blank" rel="noopener"
+                    class="px-5 py-2.5 rounded-xl bg-brand-600 text-white font-medium text-sm flex items-center gap-2 hover:bg-brand-700 transition-colors">
+                    <span>Live Preview</span>
+                    <i class="fa-solid fa-external-link text-xs"></i>
+                </a>
+                <a id="modal-github-link" href="#" target="_blank" rel="noopener"
+                    class="px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium text-sm flex items-center gap-2 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+                    <span>GitHub Code</span>
+                    <i class="fa-brands fa-github text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="skills.js"></script>
+    <script type="module" src="connect.js"></script>
+</body>
+
+</html>
