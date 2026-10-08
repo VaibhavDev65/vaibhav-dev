@@ -1,0 +1,35 @@
+[
+  {
+    "id": "project-1",
+    "title": "Nexus Analytics Dashboard",
+    "category": "web",
+    "description": "A ready-to-run YouTube downloader packaged as a ZIP. Unzip, install dependencies, and pull videos quickly.",
+    "longDescription": "Nexus Analytics is an enterprise-grade web application offering real-time data visualization, customizable dashboards, and automated performance reporting. Built with React and Node.js microservices for maximum speed.",
+    "image": "https://github.com/VaibhavDev65/vaibhav-dev/blob/main/assets/YT_video_downloader.png?raw=true",
+    "tags": ["Python", "PyQT5", "Windows", "YouTube"],
+    "liveLink": "Projects/YT_videos_downloader.zip",
+    "githubLink": "https://github.com/VaibhavDev65/vaibhav-dev"
+  },
+  {
+    "id": "project-2",
+    "title": "Physics With Anurag",
+    "category": "web",
+    "description": "Official website for physics notes and resources. Designed for fast access and clean UI.",
+    "longDescription": "Physics With Anurag is a dedicated educational platform providing comprehensive physics notes, interactive problem-solving tools, and resource links for students. The website is optimized for speed and user experience.",
+    "image": "https://github.com/VaibhavDev65/vaibhav-dev/blob/main/assets/anurag.png?raw=true",
+    "tags": ["HTML5", "CSS3", "Common JS", "profile"],
+    "liveLink": "https://physics-with-anurag.page.gd/?i=1",
+    "githubLink": "https://physics-with-anurag.page.gd/?i=1"
+  },
+  {
+    "id": "project-3",
+    "title": "Cluter Handler",
+    "category": "web",
+    "description": "Fix you dirty random files in a folder.",
+    "longDescription": "Cluter Handler is a simple yet effective tool for organizing and cleaning up random files in a folder. It provides a user-friendly interface to identify, sort, and remove unwanted files efficiently.",
+    "image": "https://github.com/VaibhavDev65/vaibhav-dev/blob/main/assets/CluterManager.png?raw=true",
+    "tags": ["Python", "PyQT5", "Windows", "File Management"],
+    "liveLink": "https://github.com/VaibhavDev65/vaibhav-dev/blob/main/Projects/cluterHandler-v-0.1.rar?raw=true",
+    "githubLink": "https://github.com/VaibhavDev65/cluter-manager"
+  }
+]

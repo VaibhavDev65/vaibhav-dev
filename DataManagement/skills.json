@@ -1,0 +1,44 @@
+[
+  {
+    "SkillID": "skill-1",
+    "SkillName": "Python",
+    "progress": 85,
+    "iconClass": "fa-brands fa-python text-2xl text-blue-400",
+    "category": "backend"
+  },
+  {
+    "SkillID": "skill-2",
+    "SkillName": "HTML 5",
+    "progress": 95,
+    "iconClass": "fa-brands fa-html5 text-2xl text-orange-500",
+    "category": "frontend"
+  },
+  {
+    "SkillID": "skill-3",
+    "SkillName": "TypeScript / JavaScript",
+    "progress": 90,
+    "iconClass": "fa-brands fa-js text-2xl text-yellow-400",
+    "category": "frontend"
+  },
+  {
+    "SkillID": "skill-4",
+    "SkillName": "CSS 3",
+    "progress": 78,
+    "iconClass": "fa-brands fa-css3-alt text-2xl text-blue-500",
+    "category": "frontend"
+  },
+  {
+    "SkillID": "skill-5",
+    "SkillName": "MySQL",
+    "progress": 38,
+    "iconClass": "fa-solid fa-database text-2xl text-green-600",
+    "category": "backend"
+  },
+  {
+    "SkillID": "skill-6",
+    "SkillName": "Blender 3D",
+    "progress": 41,
+    "iconClass": "fa-solid fa-cube text-2xl text-orange-500",
+    "category": "devops"
+  }
+]
